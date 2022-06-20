@@ -8,6 +8,6 @@ COPY --from=clone /app/war-hello-maven /app
 RUN mvn package 
 
 FROM tomcat
-COPY --from=build /app/target/hello-word-war-1.0.0.war /usr/local/tomcat/webapps/ROOT.war
-COPY --from=build /app/target/hello-word-war-1.0.0/ /usr/local/tomcat/webapps/ROOT
+COPY --from=build /app/target/*.war /usr/local/tomcat/webapps/ROOT.war
+COPY --from=build /app/target/*hello*/ /usr/local/tomcat/webapps/ROOT
 EXPOSE 8084
